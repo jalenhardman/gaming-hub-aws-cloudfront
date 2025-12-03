@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jalen | Gamer & Streamer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jalen's gaming hub: streams, setup, clips, and contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050510;
+      --bg-alt: #0b0b1c;
+      --accent: #7b5cff;
+      --accent-soft: rgba(123, 92, 255, 0.2);
+      --accent-2: #00ffc6;
+      --text-main: #f5f5ff;
+      --text-muted: #a1a1c3;
+      --card: #111122;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --danger: #ff4e7a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #1a1440 0, #050510 40%, #02020a 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .glow-orb {
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(123,92,255,0.55) 0, transparent 70%);
+      top: -80px;
+      right: -60px;
+      pointer-events: none;
+      filter: blur(2px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .glow-orb.bottom {
+      top: auto;
+      bottom: -120px;
+      left: -60px;
+      background: radial-gradient(circle, rgba(0,255,198,0.45) 0, transparent 70%);
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(5,5,16,0.95), rgba(5,5,16,0.9));
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.4rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Rajdhani', system-ui;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 18px rgba(123,92,255,0.6);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-family: 'Rajdhani', system-ui;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.3rem;
+      transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-2);
+      border-color: var(--accent-2);
+      transform: translateY(-1px);
+    }
+
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.2rem 1.4rem 3.4rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 2.2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(123, 92, 255, 0.7);
+      color: var(--accent-2);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-family: 'Rajdhani', system-ui;
+      margin-bottom: 0.9rem;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 8px var(--accent-2);
+    }
+
+    h1 {
+      font-family: 'Rajdhani', system-ui;
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 span {
+      color: var(--accent-2);
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      max-width: 480px;
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-sub strong {
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Rajdhani', system-ui;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #050510;
+      box-shadow: 0 0 18px rgba(0, 255, 198, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 24px rgba(0, 255, 198, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(15,15,30,0.9);
+      border-color: var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(5,5,18,0.7);
+    }
+
+    .hero-meta span b {
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    /* RIGHT HERO CARD */
+    .status-card {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(0,255,198,0.05), transparent 50%), var(--card);
+      border: 1px solid var(--border-subtle);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.6);
+    }
+
+    .status-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .status-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-family: 'Rajdhani', system-ui;
+      color: var(--text-muted);
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 78, 122, 0.18);
+      border: 1px solid rgba(255, 78, 122, 0.8);
+      color: var(--danger);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: 'Rajdhani', system-ui;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--danger);
+      box-shadow: 0 0 10px var(--danger);
+    }
+
+    .game-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, #10101f, #050510);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .game-thumb {
+      height: 150px;
+      background-image: linear-gradient(120deg, rgba(0,255,198,0.2), rgba(123,92,255,0.4)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.2);
+    }
+
+    .game-info {
+      padding: 0.85rem 0.9rem 1rem;
+    }
+
+    .game-title {
+      font-family: 'Rajdhani', system-ui;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .game-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .game-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .game-tags span {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+
+    .status-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .status-footer strong {
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 2.6rem;
+    }
+
+    section h2 {
+      font-family: 'Rajdhani', system-ui;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.4fr;
+      gap: 1.8rem;
+    }
+
+    .card {
+      border-radius: 16px;
+      background: rgba(9,9,25,0.98);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .card p + p {
+      margin-top: 0.5rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.9rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      color: var(--accent-2);
+    }
+
+    .setup-list {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.86rem;
+    }
+
+    .setup-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px dashed rgba(255,255,255,0.07);
+    }
+
+    .setup-label {
+      color: var(--text-muted);
+    }
+
+    .setup-value {
+      color: var(--text-main);
+      text-align: right;
+    }
+
+    /* CLIPS */
+    .clips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .clip-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .clip-thumb {
+      height: 130px;
+      background-image: linear-gradient(135deg, rgba(123,92,255,0.4), rgba(0,255,198,0.2)), 
+                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .clip-body {
+      padding: 0.7rem 0.8rem 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .clip-title {
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+      font-size: 0.86rem;
+    }
+
+    .clip-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      opacity: 0.8;
+    }
+
+    .clip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+      border-color: rgba(0,255,198,0.65);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.4rem 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(5,5,16,0.98);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      font-size: 0.8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-2);
+      border-color: rgba(0,255,198,0.6);
+    }
+
+    a.link-inline {
+      color: var(--accent-2);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,255,198,0.6);
+    }
+    a.link-inline:hover {
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .status-card {
+        order: -1;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main {
+        padding-inline: 1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .status-card {
+        padding: 1.1rem 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orb"></div>
+  <div class="glow-orb bottom"></div>
+
+  <!-- NAV -->
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-badge">J</div>
+        <span>Jalen • Gaming Hub</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#setup">Setup</a>
+        <a href="#clips">Clips</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="tag">
+          <div class="tag-dot"></div>
+          <span>Player 1 • Online</span>
+        </div>
+
+        <h1>Jalen <span>Hardman</span></h1>
+        <p class="hero-sub">
+          Gamer & aspiring <strong>cloud / IT pro</strong> grinding ranked matches and real-life XP.
+          This is my hub for streams, clips, and everything I’m building next.
+        </p>
+
+        <div class="hero-buttons">
+          <!-- Replace # with your Twitch / Kick / YouTube link -->
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            ▶ Watch Live
+          </a>
+          <!-- Replace # with your GitHub profile -->
+          <a class="btn btn-ghost" href="https://github.com/jalenhardman" target="_blank" rel="noopener">
+            &lt;/&gt; GitHub
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span><b>Rank:</b> Grinding</span>
+          <span><b>Main games:</b> Action • RPG • Competitive</span>
+          <span><b>Location:</b> US Central</span>
+        </div>
+      </div>
+
+      <!-- STATUS CARD -->
+      <aside class="status-card">
+        <div class="status-header">
+          <span class="status-title">Now playing</span>
+          <div class="live-pill">
+            <span class="live-dot"></span>
+            Live
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-thumb"></div>
+          <div class="game-info">
+            <div class="game-title">Story mode + side quests</div>
+            <div class="game-meta">
+              <span>Controller: DualSense</span>
+              <span>Queue: Open</span>
+            </div>
+            <div class="game-tags">
+              <span>Chill vibes</span>
+              <span>Mic on</span>
+              <span>No rage (trying)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-footer">
+          <span>Streaming schedule: <strong>Grinding when off work</strong></span>
+          <span>Next goal: <strong>First 50 followers</strong></span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About the player</h2>
+      <div class="about-grid">
+        <div class="card">
+          <p>
+            I’m Jalen — a gamer who loves story-driven games, competitive matches, and leveling up
+            in real life. When I’m not in queue, I’m studying cloud, IT, and cybersecurity to break into tech.
+          </p>
+          <p>
+            This site is where I drop my stream info, favorite clips, and the setups I’m building over time.
+            Come through for chill vibes, honest reactions, and a grind that doesn’t stop.
+          </p>
+
+          <div class="pill-row">
+            <div class="pill"><span>Playstyle:</span> Aggressive but calculated</div>
+            <div class="pill"><span>Strength:</span> Clutch moments under pressure</div>
+            <div class="pill"><span>Weakness:</span> “One more game” at 3 AM</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <p><strong>Content goals</strong></p>
+          <p>
+            • Build a small but loyal community<br>
+            • Showcase my journey into IT / cloud<br>
+            • Mix gaming, tech, and self-improvement in one place
+          </p>
+          <p style="margin-top:0.6rem;">
+            If you want to connect for games, tech, or collabs, all my links are below.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETUP -->
+    <section id="setup">
+      <h2>Setup & gear</h2>
+      <div class="card">
+        <ul class="setup-list">
+          <li>
+            <span class="setup-label">Platform</span>
+            <span class="setup-value">PlayStation + Laptop</span>
+          </li>
+          <li>
+            <span class="setup-label">Display</span>
+            <span class="setup-value">1080p / 60–120Hz (upgrading soon)</span>
+          </li>
+          <li>
+            <span class="setup-label">Controller</span>
+            <span class="setup-value">DualSense wireless</span>
+          </li>
+          <li>
+            <span class="setup-label">Headset</span>
+            <span class="setup-value">Over-ear gaming headset</span>
+          </li>
+          <li>
+            <span class="setup-label">Mic</span>
+            <span class="setup-value">Headset mic (solo mic on the wishlist)</span>
+          </li>
+          <li>
+            <span class="setup-label">Games in rotation</span>
+            <span class="setup-value">Story games, action RPGs, online co-op</span>
+          </li>
+        </ul>
+        <p style="margin-top:0.85rem; font-size:0.86rem;">
+          This setup will evolve as I upgrade gear. If you’ve got recommendations,
+          hit me on socials — especially for mics, monitors, and capture cards.
+        </p>
+      </div>
+    </section>
+
+    <!-- CLIPS -->
+    <section id="clips">
+      <h2>Clips & highlights</h2>
+      <div class="clips-grid">
+        <!-- Replace # with real clip links (Twitch / YouTube / TikTok) -->
+        <a class="clip-card" href="#" target="_blank" rel="noopener">
+          <div class="clip-thumb"></div>
+          <div class="clip-body">
+            <div class="clip-title">Last-second clutch</div>
+            <div class="clip-meta">
+              <span>Game winner energy</span>
+              <span>0:32</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="clip-card" href="#" target="_blank" rel="noopener">
+          <div class="clip-thumb" style="background-image: linear-gradient(135deg, rgba(0,255,198,0.35), rgba(123,92,255,0.3)), url('https://images.unsplash.com/photo-1618004912476-29818d81ae2e?auto=format&fit=crop&w=900&q=80');"></div>
+          <div class="clip-body">
+            <div class="clip-title">Perfect parry chain</div>
+            <div class="clip-meta">
+              <span>Timing on point</span>
+              <span>0:47</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="clip-card" href="#" target="_blank" rel="noopener">
+          <div class="clip-thumb" style="background-image: linear-gradient(135deg, rgba(123,92,255,0.5), rgba(0,255,198,0.25)), url('https://images.unsplash.com/photo-1486401899868-0e435ed85128?auto=format&fit=crop&w=900&q=80');"></div>
+          <div class="clip-body">
+            <div class="clip-title">Squad wipe moment</div>
+            <div class="clip-meta">
+              <span>Team carry</span>
+              <span>1:03</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top:0.85rem; font-size:0.86rem; color:var(--text-muted);">
+        These are placeholders for now. As I stack clips, I’ll plug in real links
+        from <span style="color:var(--accent-2);">Twitch / YouTube / TikTok</span>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Jalen • Gaming & Growth. GG.</span>
+      <div class="footer-links">
+        <!-- Replace # with your real links -->
+        <a href="#" target="_blank" rel="noopener">Twitch / Kick</a>
+        <a href="https://github.com/jalenhardman" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">YouTube / Clips</a>
+        <a href="#" target="_blank" rel="noopener">Instagram / X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
